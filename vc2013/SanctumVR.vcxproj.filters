@@ -29,6 +29,9 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\SanctumCathedralVk.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\SanctumCathedral.h">
       <Filter>Source Files</Filter>
     </ClInclude>

@@ -79,7 +79,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";..\..\Cinder\tools\vulkan\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -93,7 +93,7 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;OpenGL32.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;OpenGL32.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\vulkan-1.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\glslang.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OGLCompiler.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OSDependent.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\SPIRV.lib;%(AdditionalDependencies);</AdditionalDependencies>
       <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -106,7 +106,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";..\..\Cinder\tools\vulkan\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -119,7 +119,7 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;OpenGL32.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;OpenGL32.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\vulkan-1.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\glslang.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OGLCompiler.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OSDependent.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\SPIRV.lib;%(AdditionalDependencies);</AdditionalDependencies>
       <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -130,7 +130,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";..\..\Cinder\tools\vulkan\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -145,7 +145,7 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder-$(PlatformToolset).lib;OpenGL32.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies>cinder-$(PlatformToolset).lib;OpenGL32.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\vulkan-1.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\glslang.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OGLCompiler.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OSDependent.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\SPIRV.lib;%(AdditionalDependencies);</AdditionalDependencies>
       <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
@@ -159,7 +159,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";..\..\Cinder\tools\vulkan\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -174,7 +174,7 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder-$(PlatformToolset).lib;OpenGL32.lib;%(AdditionalDependencies);.</AdditionalDependencies>
+      <AdditionalDependencies>cinder-$(PlatformToolset).lib;OpenGL32.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\vulkan-1.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\glslang.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OGLCompiler.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\OSDependent.lib;..\..\Cinder\tools\vulkan\lib\msw\$(PlatformTarget)\$(Configuration)\SPIRV.lib;%(AdditionalDependencies);.</AdditionalDependencies>
       <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
@@ -195,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\src\SanctumCathedralVk.h" />
     <ClInclude Include="..\src\SanctumCathedral.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
