@@ -53,11 +53,16 @@ public:
         mDefaultShader = vk::GlslProg::create(shaderFormat);
         mDefaultShader->uniform("ciBlock1.uAmbient", vec4(1,1,1,1));
 #endif
-        mVaultPipingTex = createTexture("textures/ElyCeiling.png", format);
-        mVaultTex = createTexture("textures/ElyCeilingBack.jpg", format);
-        mVault = vk::Batch::create(createCeilingGeometry(), mDefaultShader);
+        auto tex = createTexture("textures/ElyCeiling.png", format);
+        auto ceiling = createCeilingGeometry();
+        mVault = vk::Batch::create(ceiling, mDefaultShader);
+        mVault->uniform("uTex0", tex);
 
-        auto tex = createTexture("textures/ArchSides.jpg", format);
+        tex = createTexture("textures/ElyCeilingBack.jpg", format);
+        mVaultPiping = vk::Batch::create(ceiling, mDefaultShader);
+        mVaultPiping->uniform("uTex0", tex);
+
+        tex = createTexture("textures/ArchSides.jpg", format);
         mWindowSides = vk::Batch::create(createWindowSidesGeometry(), mDefaultShader);
         mWindowSides->uniform("uTex0", tex);
 
@@ -102,6 +107,12 @@ public:
 
     void update()
     {
+        {
+            vk::ScopedModelMatrix matrix;
+            vk::translate(vec3(0.0f, -0.2f, 0.0f));
+            updateBatch(mVaultPiping);
+        }
+
         updateBatch(mVault);
         updateBatch(mMainWindows);
         updateBatch(mWindowPanes);
@@ -300,14 +311,9 @@ private:
 
     void drawCeiling()
     {
-        mVault->uniform("uTex0", mVaultTex);
         mVault->draw();
 
-        mVault->uniform("uTex0", mVaultPipingTex);
-        vk::ScopedModelMatrix matrix;
-        vk::translate(vec3(0.0f, -0.2f, 0.0f));
-        updateBatch(mVault);
-        mVault->draw();
+        mVaultPiping->draw();
     }
 
     void drawMainWindows()
@@ -354,8 +360,7 @@ private:
     }
 
     vk::BatchRef        mVault;
-    vk::TextureRef      mVaultTex;
-    vk::TextureRef      mVaultPipingTex;
+    vk::BatchRef        mVaultPiping;
 
     // TODO: describe the draw
     vk::BatchRef        mMainWindows;
