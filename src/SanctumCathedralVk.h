@@ -9,7 +9,7 @@
 #ifndef SanctumCathedral_h
 #define SanctumCathedral_h
 
-#include "cinder/gl/gl.h"
+#include "cinder/vk/vk.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -24,62 +24,63 @@ public:
     {
     }
     
-    gl::TextureRef createTexture(char* fileName, const gl::Texture::Format& format)
+    vk::TextureRef createTexture(char* fileName, const vk::Texture::Format& format)
     {
-        auto surface = loadImage(loadAsset(fileName));
-        auto tex = gl::Texture::create(surface, format);
+        auto surface = Surface::create(loadImage(loadAsset(fileName)));
+        auto tex = vk::Texture::create(*surface, format);
+
         return tex;
     }
 
     void setupModel()
     {
-        gl::Texture::Format format;
+        vk::Texture::Format format;
         format.mipmap(true);
-        format.setMaxAnisotropy( 32.0f );
+        //format.setMaxAnisotropy( 32.0f );
         
-        gl::ShaderDef glsl  = gl::ShaderDef().texture().color();
-        mDefaultShader = gl::getStockShader(glsl);
-        
+        vk::ShaderDef glsl  = vk::ShaderDef().texture().color();
+        mDefaultShader = vk::getStockShader(glsl);
+
         mVaultPipingTex     = createTexture("textures/ElyCeiling.png", format );
         mVaultTex           = createTexture("textures/ElyCeilingBack.jpg", format );
-        mVault              = gl::Batch::create( createCeilingGeometry(), mDefaultShader );
+        mVault              = vk::Batch::create( createCeilingGeometry(), mDefaultShader );
         
         mWindowSidesTex     = createTexture("textures/ArchSides.jpg", format );
-        mWindowSides        = gl::Batch::create( createWindowSidesGeometry(), mDefaultShader );
+        mWindowSides        = vk::Batch::create( createWindowSidesGeometry(), mDefaultShader );
 
         mMainWindowsTex     = createTexture("textures/ElyEndWindows.jpg", format );
-        mMainWindows        = gl::Batch::create( createMainWindowGeometry(), mDefaultShader );
+        mMainWindows        = vk::Batch::create( createMainWindowGeometry(), mDefaultShader );
         
         mFloorTex           = createTexture("textures/ElyFloor.jpg", format );
-        mFloor              = gl::Batch::create( geom::Plane().size( vec2( 27.15f, 60.96f ) )
+        mFloor              = vk::Batch::create( geom::Plane().size( vec2( 27.15f, 60.96f ) )
                                                               .normal( vec3( 0.0f, -1.0f, 0.0f ) )
                                                               >> geom::Translate( 0.0f, -6.6f, 0.0f ),
                                                  mDefaultShader );
        
         mWindowPanesTex     = createTexture("textures/ElySideWindowsBack.jpg", format );
-        mWindowPanes        = gl::Batch::create( createWindowPanesGeometry(), mDefaultShader );
+        mWindowPanes        = vk::Batch::create( createWindowPanesGeometry(), mDefaultShader );
         mWindowMullionsTex  = createTexture("textures/ElySideWindowsBack2.png", format );
-        mWindowMullions     = gl::Batch::create( createWindowMullionsGeometry(), mDefaultShader );
+        mWindowMullions     = vk::Batch::create( createWindowMullionsGeometry(), mDefaultShader );
         mCentreMullionsTex  = createTexture("textures/ElySideWindowsCentre2.png", format );
-        mCentreMullions     = gl::Batch::create( createCentreMullionsGeometry(), mDefaultShader );
+        mCentreMullions     = vk::Batch::create( createCentreMullionsGeometry(), mDefaultShader );
         mCentrePanesTex     = createTexture("textures/ElySideWindowsCentre.jpg", format );
-        mCentrePanes        = gl::Batch::create( createCentrePanesGeometry(), mDefaultShader );
+        mCentrePanes        = vk::Batch::create( createCentrePanesGeometry(), mDefaultShader );
         
         mEndColumnsTex      = createTexture("textures/ElyEndColumns.jpg", format );
-        mEndColumns         = gl::Batch::create( createEndColumGeometry(), mDefaultShader );
+        mEndColumns         = vk::Batch::create( createEndColumGeometry(), mDefaultShader );
         
         mWallsTex           = createTexture("textures/ElySideWalls.png", format );
-        mWalls              = gl::Batch::create( createWallsGeometry(), mDefaultShader );
+        mWalls              = vk::Batch::create( createWallsGeometry(), mDefaultShader );
         
         mLightTex           = createTexture("textures/LightBeam.png", format );
-        mLight              = gl::Batch::create( createLightGeometry(), mDefaultShader );
+        mLight              = vk::Batch::create( createLightGeometry(), mDefaultShader );
     
     }
     
     void draw()
     {
-        gl::enableAlphaBlending();
-        gl::color( 1.0f, 1.0f, 1.0f, 1.0f );
+        vk::enableAlphaBlending();
+        //vk::color( 1.0f, 1.0f, 1.0f, 1.0f );
         drawMainWindows();
         drawEndColumns();
         drawCeiling();
@@ -87,7 +88,7 @@ public:
         drawFloor();
         drawWindowSides();
         drawWalls();
-        gl::color( 1.0f, 1.0f, 1.0f, 0.15f );
+        //vk::color( 1.0f, 1.0f, 1.0f, 0.15f );
         drawLightBeams();
     }
     
@@ -233,15 +234,15 @@ private:
         lightMesh.appendPosition(vec3(-11.7, 2.2, -5.8));
 
         lightMesh.appendTexCoord(vec2(1.0f, 0.0f));
-        lightMesh.appendPosition( vec3( 9.7, -6.0, 6.7 ) );
+        lightMesh.appendPosition(vec3(9.7, -6.0, 6.7));
 
         lightMesh.appendTexCoord(vec2(0.0f, 0.0f));
-        lightMesh.appendPosition( vec3( -7.6, -6.0, -3.5 ) );
+        lightMesh.appendPosition(vec3(-7.6, -6.0, -3.5));
 
         for (int i = 0; i < 4; i++)
         {
             lightGeometry &= lightMesh
-                >> geom::Translate( -1.0f, 0.0f, 19.5f - 13.22f * (float)i );
+                >> geom::Translate(-1.0f, 0.0f, 19.5f - 13.22f * (float)i);
         }
 
         return lightGeometry;
@@ -251,104 +252,104 @@ private:
     
     void drawCeiling()
     {
-        mVaultTex->bind();
+        mDefaultShader->uniform("uTex0", mVaultTex);
         mVault->draw();
         
-        mVaultPipingTex->bind();
-        gl::pushMatrices();
-        gl::translate( vec3( 0.0f, -0.2f, 0.0f ) );
+        mDefaultShader->uniform("uTex0", mVaultPipingTex);
+        vk::pushMatrices();
+        vk::translate( vec3( 0.0f, -0.2f, 0.0f ) );
         mVault->draw();
-        gl::popMatrices();
+        vk::popMatrices();
     }
     
     void drawMainWindows()
     {
-        mMainWindowsTex->bind();
+        mDefaultShader->uniform("uTex0", mMainWindowsTex);
         mMainWindows->draw();
     }
     
     void drawSideWindows()
     {
-        mWindowPanesTex->bind();
+        mDefaultShader->uniform("uTex0", mWindowPanesTex);
         mWindowPanes->draw();
         
-        mWindowMullionsTex->bind();
+        mDefaultShader->uniform("uTex0", mWindowMullionsTex);
         mWindowMullions->draw();
         
-        mCentrePanesTex->bind();
+        mDefaultShader->uniform("uTex0", mCentrePanesTex);
         mCentrePanes->draw();
         
-        mCentreMullionsTex->bind();
+        mDefaultShader->uniform("uTex0", mCentreMullionsTex);
         mCentreMullions->draw();
     }
     
     void drawFloor()
     {
-        mFloorTex->bind();
+        mDefaultShader->uniform("uTex0", mFloorTex);
         mFloor->draw();
     }
     
     void drawEndColumns()
     {
-        gl::disableDepthWrite();
-        mEndColumnsTex->bind();
+        vk::disableDepthWrite();
+        mDefaultShader->uniform("uTex0", mEndColumnsTex);
         mEndColumns->draw();
-        gl::enableDepthWrite();
+        vk::enableDepthWrite();
     }
     
     void drawWindowSides()
     {
-        mWindowSidesTex->bind();
+        mDefaultShader->uniform("uTex0", mWindowSidesTex);
         mWindowSides->draw();
     }
     
     void drawWalls()
     {
-        mWallsTex->bind();
+        mDefaultShader->uniform("uTex0", mWallsTex);
         mWalls->draw();
     }
     
     void drawLightBeams()
     {
-        mLightTex->bind();
+        mDefaultShader->uniform("uTex0", mLightTex);
         mLight->draw();
     }
     
-    gl::BatchRef        mVault;
-    gl::TextureRef      mVaultTex;
-    gl::TextureRef      mVaultPipingTex;
+    vk::BatchRef        mVault;
+    vk::TextureRef      mVaultTex;
+    vk::TextureRef      mVaultPipingTex;
     
-    gl::BatchRef        mMainWindows;
-    gl::TextureRef      mMainWindowsTex;
+    vk::BatchRef        mMainWindows;
+    vk::TextureRef      mMainWindowsTex;
     
-    gl::BatchRef        mFloor;
-    gl::TextureRef      mFloorTex;
+    vk::BatchRef        mFloor;
+    vk::TextureRef      mFloorTex;
     
-    gl::BatchRef        mWindowPanes;
-    gl::TextureRef      mWindowPanesTex;
+    vk::BatchRef        mWindowPanes;
+    vk::TextureRef      mWindowPanesTex;
 
-    gl::BatchRef        mWindowMullions;
-    gl::TextureRef      mWindowMullionsTex;
+    vk::BatchRef        mWindowMullions;
+    vk::TextureRef      mWindowMullionsTex;
     
-    gl::BatchRef        mCentrePanes;
-    gl::TextureRef      mCentrePanesTex;
+    vk::BatchRef        mCentrePanes;
+    vk::TextureRef      mCentrePanesTex;
     
-    gl::BatchRef        mCentreMullions;
-    gl::TextureRef      mCentreMullionsTex;
+    vk::BatchRef        mCentreMullions;
+    vk::TextureRef      mCentreMullionsTex;
     
-    gl::BatchRef        mEndColumns;
-    gl::TextureRef      mEndColumnsTex;
+    vk::BatchRef        mEndColumns;
+    vk::TextureRef      mEndColumnsTex;
     
-    gl::BatchRef        mWindowSides;
-    gl::TextureRef      mWindowSidesTex;
+    vk::BatchRef        mWindowSides;
+    vk::TextureRef      mWindowSidesTex;
     
-    gl::BatchRef        mWalls;
-    gl::TextureRef      mWallsTex;
+    vk::BatchRef        mWalls;
+    vk::TextureRef      mWallsTex;
     
-    gl::BatchRef        mLight;
-    gl::TextureRef      mLightTex;
+    vk::BatchRef        mLight;
+    vk::TextureRef      mLightTex;
 
-    gl::GlslProgRef     mDefaultShader;
+    vk::GlslProgRef     mDefaultShader;
     
 };
 

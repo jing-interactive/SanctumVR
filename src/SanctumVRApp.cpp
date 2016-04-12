@@ -1,22 +1,31 @@
+#define VULKAN_MODE
+
 #include "cinder/app/App.h"
-#include "cinder/app/RendererGl.h"
-#include "cinder/gl/gl.h"
 #include "cinder/ObjLoader.h"
 #include "cinder/CameraUI.h"
 #include "cinder/Log.h"
 //#include "cinder/gl/Context.h"
 //#include "cinder/Utilities.h"
 
+using namespace ci;
+using namespace ci::app;
+using namespace std;
+
+#ifdef VULKAN_MODE
+#include "cinder/app/RendererVk.h"
+#include "SanctumCathedralVk.h"
+#define gfx vk
+#else
+#include "cinder/app/RendererGl.h"
 #include "SanctumCathedral.h"
+#define gfx gl
+#endif
 
 #if defined CINDER_MSW_OCULUS_RIFT
     #include "CinderOculus.h"
 using namespace hmd;
 #endif
 
-using namespace ci;
-using namespace ci::app;
-using namespace std;
 
 class SanctumVRApp : public App {
   public:
@@ -49,9 +58,9 @@ SanctumVRApp::SanctumVRApp()
 
     mSanctum.setupModel();
 
-    gl::enableDepthWrite();
-    gl::enableDepthRead();
-    gl::enableAlphaBlending();
+    gfx::enableDepthWrite();
+    gfx::enableDepthRead();
+    gfx::enableAlphaBlending();
 
 #if defined CINDER_MSW_OCULUS_RIFT
 	try {
@@ -77,7 +86,7 @@ void SanctumVRApp::update()
     }
     
     // Draw from update due to conflicting WM_PAINT signal emitted by ovr_submitFrame (0.7 SDK).
-    gl::clear( Color( 1.0f, 1.0f, 1.0f ) );
+    gfx::clear( Color( 1.0f, 1.0f, 1.0f ) );
 
     if( mRift && ! mRift->isFrameSkipped() ) {
         ScopedRiftBuffer bind{ mRift };
@@ -90,9 +99,9 @@ void SanctumVRApp::update()
             // Draw positional tracking camera frustum
             CameraPersp positional;
             if( mRift->getPositionalTrackingCamera( &positional ) ) {
-                gl::setModelMatrix( mat4() );
-                gl::lineWidth( 1.0f );
-                gl::drawFrustum( positional );
+                gfx::setModelMatrix( mat4() );
+                gfx::lineWidth( 1.0f );
+                gfx::drawFrustum( positional );
             }
         }
     }
@@ -100,19 +109,19 @@ void SanctumVRApp::update()
 
 void SanctumVRApp::drawScene()
 {
-	gl::pushMatrices();
-	gl::rotate( -M_PI * 0.5f, vec3(1.0f, 0.0f, 0.0f ) );
-	//gl::scale( vec3( 0.1f ); // this doesnt affect the perception of scale
-	gl::translate( vec3( 8.0f *cos( getElapsedSeconds()*0.1f ), 2.0f, 15.0f * sin( getElapsedSeconds()*0.1f ) ) );
+	gfx::pushMatrices();
+	gfx::rotate( -M_PI * 0.5f, vec3(1.0f, 0.0f, 0.0f ) );
+	//gfx::scale( vec3( 0.1f ); // this doesnt affect the perception of scale
+	gfx::translate( vec3( 8.0f *cos( getElapsedSeconds()*0.1f ), 2.0f, 15.0f * sin( getElapsedSeconds()*0.1f ) ) );
     mSanctum.draw();
-	gl::popMatrices();
+	gfx::popMatrices();
 }
 
 void SanctumVRApp::draw()
 {
     if( ! mRift ) {
-        gl::viewport( getWindowSize() );
-        gl::setMatrices( mCam );
+        gfx::viewport( getWindowSize() );
+        gfx::setMatrices( mCam );
         
         drawScene();
     }
@@ -127,9 +136,8 @@ void SanctumVRApp::drawScene(){}
 
 void SanctumVRApp::draw()
 {
-	gl::clear( Color( 1.0f, 1.0f, 1.0f ) );
-    
-    gl::setMatrices( mCam );
+    gfx::clear();
+    gfx::setMatrices( mCam );
     
     mSanctum.draw();
 }
@@ -149,4 +157,12 @@ void prepareSettings(App::Settings *settings)
 	settings->setWindowSize(1920 / 2, 1080 / 2);
 }
 
-CINDER_APP( SanctumVRApp, RendererGl(RendererGl::Options().msaa(0)), prepareSettings)
+#ifdef VULKAN_MODE
+CINDER_APP(SanctumVRApp, 
+    RendererVk(RendererVk::Options().setSamples(VK_SAMPLE_COUNT_1_BIT)),
+    prepareSettings)
+#else
+CINDER_APP(SanctumVRApp, 
+    RendererGl(RendererGl::Options().msaa(0)),
+    prepareSettings)
+#endif
