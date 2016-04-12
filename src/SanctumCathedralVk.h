@@ -80,7 +80,7 @@ public:
     void draw()
     {
         vk::enableAlphaBlending();
-        //vk::color( 1.0f, 1.0f, 1.0f, 1.0f );
+        vk::ScopedColor mainClr{ 1.0f, 1.0f, 1.0f, 1.0f };
         drawMainWindows();
         drawEndColumns();
         drawCeiling();
@@ -88,7 +88,8 @@ public:
         drawFloor();
         drawWindowSides();
         drawWalls();
-        //vk::color( 1.0f, 1.0f, 1.0f, 0.15f );
+
+        vk::ScopedColor lightClr{ 1.0f, 1.0f, 1.0f, 0.15f };
         drawLightBeams();
     }
     

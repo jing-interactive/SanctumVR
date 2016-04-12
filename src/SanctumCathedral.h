@@ -79,7 +79,7 @@ public:
     void draw()
     {
         gl::enableAlphaBlending();
-        gl::color( 1.0f, 1.0f, 1.0f, 1.0f );
+        gl::ScopedColor mainClr{ 1.0f, 1.0f, 1.0f, 1.0f };
         drawMainWindows();
         drawEndColumns();
         drawCeiling();
@@ -87,7 +87,8 @@ public:
         drawFloor();
         drawWindowSides();
         drawWalls();
-        gl::color( 1.0f, 1.0f, 1.0f, 0.15f );
+
+        gl::ScopedColor lightClr{ 1.0f, 1.0f, 1.0f, 0.15f };
         drawLightBeams();
     }
     

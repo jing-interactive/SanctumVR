@@ -1,11 +1,9 @@
-#define VULKAN_MODE
+//#define VULKAN_MODE
 
 #include "cinder/app/App.h"
 #include "cinder/ObjLoader.h"
 #include "cinder/CameraUI.h"
 #include "cinder/Log.h"
-//#include "cinder/gl/Context.h"
-//#include "cinder/Utilities.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -155,11 +153,31 @@ void prepareSettings(App::Settings *settings)
 #endif
 	settings->setTitle("Sanctum VR");
 	settings->setWindowSize(1920 / 2, 1080 / 2);
+
+#ifdef _DEBUG
+    settings->setConsoleWindowEnabled();
+#endif
 }
 
 #ifdef VULKAN_MODE
+const std::vector<std::string> gLayers = {
+    //"VK_LAYER_LUNARG_api_dump",
+    //"VK_LAYER_LUNARG_standard_validation",
+    //"VK_LAYER_LUNARG_threading",
+    //"VK_LAYER_LUNARG_mem_tracker",
+    //"VK_LAYER_LUNARG_object_tracker",
+    //"VK_LAYER_LUNARG_draw_state",
+    //"VK_LAYER_LUNARG_param_checker",
+    //"VK_LAYER_LUNARG_swapchain",
+    //"VK_LAYER_LUNARG_device_limits",
+    //"VK_LAYER_LUNARG_image",
+    //"VK_LAYER_GOOGLE_unique_objects",
+};
 CINDER_APP(SanctumVRApp, 
-    RendererVk(RendererVk::Options().setSamples(VK_SAMPLE_COUNT_1_BIT)),
+    RendererVk(RendererVk::Options()
+        .setSamples(VK_SAMPLE_COUNT_1_BIT)
+        .setLayers(gLayers)
+    ),
     prepareSettings)
 #else
 CINDER_APP(SanctumVRApp, 
