@@ -32,7 +32,10 @@
     <ClInclude Include="..\src\SanctumCathedralVk.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SanctumCathedral.h">
+    <ClInclude Include="..\src\SanctumCathedralGl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SanctumCathedral.inl">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

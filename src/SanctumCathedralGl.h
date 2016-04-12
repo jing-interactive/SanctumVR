@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cinder/vk/vk.h"
+#include "cinder/gl/gl.h"
 
-#define gfx vk
+#define gfx gl
 #include "SanctumCathedral.inl"

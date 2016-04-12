@@ -12,11 +12,9 @@ using namespace std;
 #ifdef VULKAN_MODE
 #include "cinder/app/RendererVk.h"
 #include "SanctumCathedralVk.h"
-#define gfx vk
 #else
 #include "cinder/app/RendererGl.h"
-#include "SanctumCathedral.h"
-#define gfx gl
+#include "SanctumCathedralGl.h"
 #endif
 
 #if defined CINDER_MSW_OCULUS_RIFT
