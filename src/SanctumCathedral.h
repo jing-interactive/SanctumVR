@@ -24,7 +24,7 @@ public:
     {
     }
     
-    gl::TextureRef createTexture(char* fileName, const gl::Texture::Format& format)
+    static gl::TextureRef createTexture(char* fileName, const gl::Texture::Format& format = gl::Texture::Format())
     {
         auto surface = loadImage(loadAsset(fileName));
         auto tex = gl::Texture::create(surface, format);
@@ -76,6 +76,11 @@ public:
     
     }
     
+    void update()
+    {
+
+    }
+
     void draw()
     {
         gl::enableAlphaBlending();

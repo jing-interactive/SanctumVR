@@ -188,7 +188,10 @@
   <ItemGroup>
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\assets\shader.frag" />
+    <None Include="..\assets\shader.vert" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <ClCompile Include="..\src\SanctumVRApp.cpp" />
