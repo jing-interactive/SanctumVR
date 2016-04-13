@@ -191,7 +191,7 @@ private:
         for (int i = -2; i < 3; i++)
             for (int j = -1; j < 2; j++)
                 if (j != 0)
-                    walls &= geom::WirePlane().size(vec2(12.19f, 37.31f)).normal(vec3(1.0f, 0.0f, 0.0f))
+                    walls &= geom::Plane().size(vec2(12.19f, 37.31f)).normal(vec3(1.0f, 0.0f, 0.0f))
                     >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
                     >> geom::Translate((float)j * 13.57f, 12.0f, (float)i * 12.19f);
 
@@ -287,12 +287,13 @@ private:
     {
         gfx::Texture::Format format;
         format.mipmap(true);
-
+#ifndef VK_API_VERSION
+        format.setMaxAnisotropy(32.0f);
+#endif
         if (mDefaultShader == nullptr)
         {
 #ifndef VK_API_VERSION
-            format.setMaxAnisotropy(32.0f);
-            auto shaderDef = gfx::ShaderDef().texture();
+            auto shaderDef = gfx::ShaderDef().texture().color();
             mDefaultShader = gfx::getStockShader(shaderDef);
 #else
             gfx::GlslProg::Format shaderFormat = gfx::GlslProg::Format()
