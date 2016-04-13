@@ -28,128 +28,52 @@ public:
 
     void setupModel()
     {
-        gfx::Texture::Format format;
-        format.mipmap(true);
-
-#if gfx == gl
-        //format.setMaxAnisotropy( 32.0f );
-#endif
-
-#if 0
-        auto shaderDef = gfx::ShaderDef().texture();
-        mDefaultShader = gfx::getStockShader(shaderDef);
-#else
-        gfx::GlslProg::Format shaderFormat = gfx::GlslProg::Format()
-            .vertex(loadAsset("shader.vert"))
-            .fragment(loadAsset("shader.frag"));
-        mDefaultShader = gfx::GlslProg::create(shaderFormat);
-        mDefaultShader->uniform("ciBlock1.uAmbient", vec4(1,1,1,1));
-#endif
-        auto tex = createTexture("textures/ElyCeiling.png", format);
         auto ceiling = createCeilingGeometry();
-        mVault = gfx::Batch::create(ceiling, mDefaultShader);
-        mVault->uniform("uTex0", tex);
+        addNode("Vault", ceiling, "textures/ElyCeiling.png");
+        auto node = addNode("VaultPiping", ceiling, "textures/ElyCeilingBack.jpg");
+        node->modelMatrix = glm::translate(vec3(0.0f, -0.2f, 0.0f));
 
-        tex = createTexture("textures/ElyCeilingBack.jpg", format);
-        mVaultPiping = gfx::Batch::create(ceiling, mDefaultShader);
-        mVaultPiping->uniform("uTex0", tex);
+        addNode("WindowSides", createWindowSidesGeometry(), "textures/ArchSides.jpg");
+        addNode("MainWindows", createMainWindowGeometry(), "textures/ElyEndWindows.jpg");
 
-        tex = createTexture("textures/ArchSides.jpg", format);
-        mWindowSides = gfx::Batch::create(createWindowSidesGeometry(), mDefaultShader);
-        mWindowSides->uniform("uTex0", tex);
+        addNode("Floor",
+            geom::Plane().size(vec2(27.15f, 60.96f))
+            .normal(vec3(0.0f, -1.0f, 0.0f))
+            >> geom::Translate(0.0f, -6.6f, 0.0f),
+            "textures/ElyFloor.jpg"
+            );
 
-        tex = createTexture("textures/ElyEndWindows.jpg", format);
-        mMainWindows = gfx::Batch::create(createMainWindowGeometry(), mDefaultShader);
-        mMainWindows->uniform("uTex0", tex);
-
-        tex = createTexture("textures/ElyFloor.jpg", format);
-        mFloor = gfx::Batch::create(geom::Plane().size(vec2(27.15f, 60.96f))
-                                   .normal(vec3(0.0f, -1.0f, 0.0f))
-                                   >> geom::Translate(0.0f, -6.6f, 0.0f),
-                                   mDefaultShader);
-        mFloor->uniform("uTex0", tex);
-
-        tex = createTexture("textures/ElySideWindowsBack.jpg", format);
-        mWindowPanes = gfx::Batch::create(createWindowPanesGeometry(), mDefaultShader);
-        mWindowPanes->uniform("uTex0", tex);
-
-        tex = createTexture("textures/ElySideWindowsBack2.png", format);
-        mWindowMullions = gfx::Batch::create(createWindowMullionsGeometry(), mDefaultShader);
-        mWindowMullions->uniform("uTex0", tex);
-        tex = createTexture("textures/ElySideWindowsCentre2.png", format);
-        mCentreMullions = gfx::Batch::create(createCentreMullionsGeometry(), mDefaultShader);
-        mCentreMullions->uniform("uTex0", tex);
-        tex = createTexture("textures/ElySideWindowsCentre.jpg", format);
-        mCentrePanes = gfx::Batch::create(createCentrePanesGeometry(), mDefaultShader);
-        mCentrePanes->uniform("uTex0", tex);
-
-        tex = createTexture("textures/ElyEndColumns.jpg", format);
-        mEndColumns = gfx::Batch::create(createEndColumGeometry(), mDefaultShader);
-        mEndColumns->uniform("uTex0", tex);
-
-        tex = createTexture("textures/ElySideWalls.png", format);
-        mWalls = gfx::Batch::create(createWallsGeometry(), mDefaultShader);
-        mWalls->uniform("uTex0", tex);
-
-        tex = createTexture("textures/LightBeam.png", format);
-        mLight = gfx::Batch::create(createLightGeometry(), mDefaultShader);
-        mLight->uniform("uTex0", tex);
-        mLight->uniform("ciBlock1.uAmbient", vec4(1.0f, 1.0f, 1.0f, 0.15f));
+        addNode("WindowPanes", createWindowPanesGeometry(), "textures/ElySideWindowsBack.jpg");
+        addNode("WindowMullions", createWindowMullionsGeometry(), "textures/ElySideWindowsBack2.png");
+        addNode("CentreMullions", createCentreMullionsGeometry(), "textures/ElySideWindowsCentre2.png");
+        addNode("CentrePanes", createCentrePanesGeometry(), "textures/ElySideWindowsCentre.jpg");
+        node = addNode("EndColumns", createEndColumGeometry(), "textures/ElyEndColumns.jpg");
+        node->depthWrite = false;
+        addNode("Walls", createWallsGeometry(), "textures/ElySideWalls.png");
+        node = addNode("Light", createLightGeometry(), "textures/LightBeam.png");
+        node->ambient = { 1.0f, 1.0f, 1.0f, 0.15f };
     }
 
     void update()
     {
+        for (auto& node : mNodes)
         {
-            gfx::ScopedModelMatrix matrix;
-            gfx::translate(vec3(0.0f, -0.2f, 0.0f));
-            updateBatch(mVaultPiping);
+            node->update();
         }
-
-        updateBatch(mVault);
-        updateBatch(mMainWindows);
-        updateBatch(mWindowPanes);
-        updateBatch(mWindowMullions);
-        updateBatch(mCentrePanes);
-        updateBatch(mEndColumns);
-        updateBatch(mWindowSides);
-        updateBatch(mLight);
-        updateBatch(mWalls);
-        updateBatch(mCentreMullions);
-        updateBatch(mFloor);
     }
 
     void draw()
     {
         gfx::enableAlphaBlending();
-        //gfx::ScopedColor mainClr{ 1.0f, 1.0f, 1.0f, 1.0f };
+        for (auto& node : mNodes)
         {
-            drawMainWindows();
-            drawEndColumns();
-            drawCeiling();
-            drawSideWindows();
-            drawFloor();
-            drawWindowSides();
-            drawWalls();
-        }
-
-        //gfx::ScopedColor lightClr{ 1.0f, 1.0f, 1.0f, 0.15f };
-        {
-            drawLightBeams();
+            node->draw();
         }
     }
 
 private:
 
     // GEOMETRY FUNCTIONS ////////////////////////////////////////////////////
-
-    void updateBatch(gfx::BatchRef batch)
-    {
-#if gfx == vk
-        batch->setDefaultUniformVars(gfx::context());
-        gfx::context()->addPendingUniformVars(batch);
-#endif
-    }
-
     geom::SourceMods createCeilingGeometry()
     {
         ObjLoader vaultGeom(loadAsset("obj/ArchElement.obj"));
@@ -160,8 +84,8 @@ private:
             for (int j = 0; j < 2; j++)
             {
                 arches &= vaultGeom
-                          >> geom::Rotate((j > 0 ? -1.0f : 1.0f) * M_PI * 0.5f, vec3(0.0f, 1.0f, 0.0f))
-                          >> geom::Translate(0.0f, 31.71f, 24.38f - (float)i * 12.19f);
+                    >> geom::Rotate((j > 0 ? -1.0f : 1.0f) * M_PI * 0.5f, vec3(0.0f, 1.0f, 0.0f))
+                    >> geom::Translate(0.0f, 31.71f, 24.38f - (float)i * 12.19f);
             }
         }
         return arches;
@@ -173,8 +97,8 @@ private:
 
         for (int i = 0; i < 2; i++)
             mainWindows &= geom::Plane().size(vec2(27.15f, 37.31f)).normal(vec3(0.0f, 0.0f, -1.0f))
-                           >> geom::Translate(0.0f, 12.0f, 30.48f)
-                           >> geom::Rotate(M_PI * (float)i, vec3(0.0f, 1.0f, 0.0f));
+            >> geom::Translate(0.0f, 12.0f, 30.48f)
+            >> geom::Rotate(M_PI * (float)i, vec3(0.0f, 1.0f, 0.0f));
 
         return mainWindows;
     }
@@ -187,8 +111,8 @@ private:
             for (int j = -1; j < 2; j++)
                 if (i != 0 && j != 0)
                     windowPanes &= geom::Plane().size(vec2(12.19f, 37.31f)).normal(vec3(1.0f, 0.0f, 0.0f))
-                                   >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
-                                   >> geom::Translate((float)j * 14.99f, 12.0f, (float)i * 12.19f);
+                    >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
+                    >> geom::Translate((float)j * 14.99f, 12.0f, (float)i * 12.19f);
 
         return windowPanes;
     }
@@ -201,8 +125,8 @@ private:
             for (int j = -1; j < 2; j++)
                 if (i != 0 && j != 0)
                     windowMullions &= geom::Plane().size(vec2(12.19f, 37.31f)).normal(vec3(1.0f, 0.0f, 0.0f))
-                                      >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
-                                      >> geom::Translate((float)j * 14.77f, 12.0f, (float)i * 12.19f);
+                    >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
+                    >> geom::Translate((float)j * 14.77f, 12.0f, (float)i * 12.19f);
 
         return windowMullions;
     }
@@ -214,8 +138,8 @@ private:
         for (int i = -1; i < 2; i++)
             if (i != 0)
                 centrePanes &= geom::Plane().size(vec2(12.19f, 37.31f)).normal(vec3(1.0f, 0.0f, 0.0f))
-                               >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
-                               >> geom::Translate((float)i * 14.99, 12.0f, -0.15f);
+                >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
+                >> geom::Translate((float)i * 14.99, 12.0f, -0.15f);
 
         return centrePanes;
     }
@@ -227,8 +151,8 @@ private:
         for (int i = -1; i < 2; i++)
             if (i != 0)
                 centreMullions &= geom::Plane().size(vec2(12.19f, 37.31f)).normal(vec3(1.0f, 0.0f, 0.0f))
-                                  >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
-                                  >> geom::Translate((float)i * 14.77, 12.0f, -0.15f);
+                >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
+                >> geom::Translate((float)i * 14.77, 12.0f, -0.15f);
 
         return centreMullions;
     }
@@ -241,7 +165,7 @@ private:
             for (int j = -1; j < 2; j++)
                 if (j != 0 && i != 0)
                     endColums &= geom::Plane().size(vec2(4.0f, 30.02f)).normal(vec3(0.0f, 0.0f, -1.0f))
-                                 >> geom::Translate((float)i * 11.6f, 8.46f, (float)j * 30.0f);
+                    >> geom::Translate((float)i * 11.6f, 8.46f, (float)j * 30.0f);
 
         return endColums;
     }
@@ -254,8 +178,8 @@ private:
         for (int i = 0; i < 5; i++)
             for (int j = 0; j < 2; j++)
                 windowSides &= side
-                               >> geom::Rotate((j > 0 ? 1.0f : -1.0f) * (float)M_PI * 0.5f, vec3(0.0f, 1.0f, 0.0f))
-                               >> geom::Translate(j > 0 ? -13.57f : 13.57f, 26.91f, 24.38 - (float)i * 12.19f);
+                >> geom::Rotate((j > 0 ? 1.0f : -1.0f) * (float)M_PI * 0.5f, vec3(0.0f, 1.0f, 0.0f))
+                >> geom::Translate(j > 0 ? -13.57f : 13.57f, 26.91f, 24.38 - (float)i * 12.19f);
 
         return windowSides;
     }
@@ -268,8 +192,8 @@ private:
             for (int j = -1; j < 2; j++)
                 if (j != 0)
                     walls &= geom::WirePlane().size(vec2(12.19f, 37.31f)).normal(vec3(1.0f, 0.0f, 0.0f))
-                             >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
-                             >> geom::Translate((float)j * 13.57f, 12.0f, (float)i * 12.19f);
+                    >> geom::Rotate((float)M_PI * 0.5, vec3(-1.0f, 0.0f, 0.0f))
+                    >> geom::Translate((float)j * 13.57f, 12.0f, (float)i * 12.19f);
 
         return walls;
     }
@@ -295,79 +219,96 @@ private:
         for (int i = 0; i < 4; i++)
         {
             lightGeometry &= lightMesh
-                             >> geom::Translate(-1.0f, 0.0f, 19.5f - 13.22f * (float)i);
+                >> geom::Translate(-1.0f, 0.0f, 19.5f - 13.22f * (float)i);
         }
 
         return lightGeometry;
     }
 
-    // DRAWING FUNCTIONS ////////////////////////////////////////////////////
+    struct Node;
+    using NodePtr = shared_ptr < Node > ;
 
-    void drawCeiling()
+    struct Node
     {
-        mVault->draw();
+        static NodePtr create(string name, gfx::BatchRef batch, gfx::Texture2dRef tex)
+        {
+            Node* node = new Node
+            {
+                name,
+                batch,
+                tex,
+                { 1, 1, 1, 1 },
+                true,
+                mat4()
+            };
 
-        mVaultPiping->draw();
+            return NodePtr(node);
+        }
+
+        string              name;
+        gfx::BatchRef       batch;
+        gfx::Texture2dRef   tex;
+        vec4                ambient;
+        bool                depthWrite;
+        mat4                modelMatrix;
+
+        void update()
+        {
+#ifdef VK_API_VERSION
+            batch->uniform("uTex0", tex);
+            batch->uniform("ciBlock1.uAmbient", ambient);
+            gfx::ScopedModelMatrix matrix;
+            gfx::multModelMatrix(modelMatrix);
+
+            batch->setDefaultUniformVars(gfx::context());
+            gfx::context()->addPendingUniformVars(batch);
+#else
+            batch->getGlslProg()->uniform("uTex0", 0);
+            batch->getGlslProg()->uniform("ciBlock1.uAmbient", ambient);
+#endif
+        }
+
+        void draw()
+        {
+            gfx::ScopedDepthWrite depthWrite(depthWrite);
+
+#ifndef VK_API_VERSION
+            tex->bind();
+            gfx::ScopedModelMatrix matrix;
+            gfx::multModelMatrix(modelMatrix);
+            gfx::color(ColorA(ambient));
+#endif
+            batch->draw();
+        }
+    };
+
+
+    NodePtr addNode(string name, geom::SourceMods geomSource, char* textureFileName)
+    {
+        gfx::Texture::Format format;
+        format.mipmap(true);
+
+        if (mDefaultShader == nullptr)
+        {
+#ifndef VK_API_VERSION
+            format.setMaxAnisotropy(32.0f);
+            auto shaderDef = gfx::ShaderDef().texture();
+            mDefaultShader = gfx::getStockShader(shaderDef);
+#else
+            gfx::GlslProg::Format shaderFormat = gfx::GlslProg::Format()
+                .vertex(loadAsset("shader.vert"))
+                .fragment(loadAsset("shader.frag"));
+            mDefaultShader = gfx::GlslProg::create(shaderFormat);
+#endif
+        }
+
+        auto nodePtr = Node::create(name,
+            gfx::Batch::create(geomSource, mDefaultShader), createTexture(textureFileName, format));
+        mNodes.push_back(nodePtr);
+        return nodePtr;
     }
 
-    void drawMainWindows()
-    {
-        mMainWindows->draw();
-    }
+    gfx::GlslProgRef mDefaultShader;
 
-    void drawSideWindows()
-    {
-        mWindowPanes->draw();
-
-        mWindowMullions->draw();
-
-        mCentrePanes->draw();
-
-        mCentreMullions->draw();
-    }
-
-    void drawFloor()
-    {
-        mFloor->draw();
-    }
-
-    void drawEndColumns()
-    {
-        gfx::disableDepthWrite();
-        mEndColumns->draw();
-        gfx::enableDepthWrite();
-    }
-
-    void drawWindowSides()
-    {
-        mWindowSides->draw();
-    }
-
-    void drawWalls()
-    {
-        mWalls->draw();
-    }
-
-    void drawLightBeams()
-    {
-        mLight->draw();
-    }
-
-    gfx::BatchRef        mVault;
-    gfx::BatchRef        mVaultPiping;
-
-    // TODO: describe the draw
-    gfx::BatchRef        mMainWindows;
-    gfx::BatchRef        mFloor;
-    gfx::BatchRef        mWindowPanes;
-    gfx::BatchRef        mWindowMullions;
-    gfx::BatchRef        mCentrePanes;
-    gfx::BatchRef        mCentreMullions;
-    gfx::BatchRef        mEndColumns;
-    gfx::BatchRef        mWindowSides;
-    gfx::BatchRef        mWalls;
-    gfx::BatchRef        mLight;
-
-    gfx::GlslProgRef     mDefaultShader;
-
+    vector<NodePtr>   mNodes;
 };

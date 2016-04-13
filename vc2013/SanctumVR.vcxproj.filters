@@ -29,13 +29,13 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SanctumCathedralVk.h">
+    <ClInclude Include="..\src\SanctumCathedral.inl">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\SanctumCathedralGl.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SanctumCathedral.inl">
+    <ClInclude Include="..\src\SanctumCathedralVk.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

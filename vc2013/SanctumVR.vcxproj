@@ -198,9 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\src\SanctumCathedral.inl" />
     <ClInclude Include="..\src\SanctumCathedralGl.h" />
     <ClInclude Include="..\src\SanctumCathedralVk.h" />
-    <ClInclude Include="..\src\SanctumCathedral.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

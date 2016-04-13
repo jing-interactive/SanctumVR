@@ -2,5 +2,6 @@
 
 #include "cinder/gl/gl.h"
 
-#define gfx gl
+namespace gfx = gl;
+
 #include "SanctumCathedral.inl"
