@@ -261,7 +261,7 @@ private:
             gfx::multModelMatrix(modelMatrix);
 
             batch->setDefaultUniformVars(gfx::context());
-            //gfx::context()->addPendingUniformVars(batch);
+            gfx::context()->addPendingUniformVars(batch);
 #else
             batch->getGlslProg()->uniform("uTex0", 0);
             batch->getGlslProg()->uniform("ciBlock1.uAmbient", ambient);
