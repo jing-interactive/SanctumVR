@@ -16,11 +16,12 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995581B128DF400A5C623 /* IOKit.framework */; };
 		00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995591B128DF400A5C623 /* IOSurface.framework */; };
-		077228DA1C2030EE00DD1014 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 077228D91C2030EE00DD1014 /* assets */; };
-		1A2AE8495D274B71827E45F9 /* SanctumVRApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D83B92461EEB4F88A901D589 /* SanctumVRApp.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
-		5681D3C8E7A443F08DE947A3 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5BA756905C794BEBBC17E377 /* CinderApp.icns */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		A5B07BC87A944BC49AD1C7D0 /* SanctumVR_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 8B4A0F41EF7649F3AE18B0B4 /* SanctumVR_Prefix.pch */; };
+		C23569BF5A814CBB92967FD6 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 61A66CF3286F4D828F53A309 /* CinderApp.icns */; };
+		2239C9DC346645F6935BC643 /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = 43C2100DA5BB4A81B81C8A9E /* Resources.h */; };
+		F278669BD89C483896BE8510 /* SanctumVRApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61D35BF0921842AB9D480DFE /* SanctumVRApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,21 +34,16 @@
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		00B995581B128DF400A5C623 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		00B995591B128DF400A5C623 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
-		03FD5C5421884CE9A0B55D00 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
-		077228D91C2030EE00DD1014 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
-		07DD95D51C203C8E00E479D4 /* SanctumCathedral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SanctumCathedral.h; path = ../src/SanctumCathedral.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		213C58B1A8A04CEBB4A5244C /* LibOVR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LibOVR.framework; path = "../../../Cinder/blocks/Cinder-OculusRift/LibOVR/Lib/Mac/Release/LibOVR.framework"; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		3D861D2657644B9785F48F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
-		5BA756905C794BEBBC17E377 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SanctumVR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SanctumVR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDC0A808039F471E8A26FBEA /* CinderOculus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = CinderOculus.cpp; path = "../../../Cinder/blocks/Cinder-OculusRift/include/CinderOculus.cpp"; sourceTree = "<group>"; };
-		D83B92461EEB4F88A901D589 /* SanctumVRApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = SanctumVRApp.cpp; path = ../src/SanctumVRApp.cpp; sourceTree = "<group>"; };
-		E2D5598281CE42FA94EA55CC /* SanctumVR_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SanctumVR_Prefix.pch; sourceTree = "<group>"; };
-		EC1E536E2AE14B2292F3D714 /* CinderOculus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CinderOculus.h; path = "../../../Cinder/blocks/Cinder-OculusRift/include/CinderOculus.h"; sourceTree = "<group>"; };
+		61D35BF0921842AB9D480DFE /* SanctumVRApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../src/SanctumVRApp.cpp; sourceTree = "<group>"; name = SanctumVRApp.cpp; };
+		43C2100DA5BB4A81B81C8A9E /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../include/Resources.h; sourceTree = "<group>"; name = Resources.h; };
+		61A66CF3286F4D828F53A309 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; name = CinderApp.icns; };
+		B7330750A23C4E5A8189B2DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; name = Info.plist; };
+		8B4A0F41EF7649F3AE18B0B4 /* SanctumVR_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SanctumVR_Prefix.pch; sourceTree = "<group>"; name = SanctumVR_Prefix.pch; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,19 +68,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01B97315FEAEA392516A2CEA /* Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				7A4FDB4B3F2E4488B22FCF99 /* OculusRift */,
-			);
-			name = Blocks;
-			sourceTree = "<group>";
-		};
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D83B92461EEB4F88A901D589 /* SanctumVRApp.cpp */,
-				07DD95D51C203C8E00E479D4 /* SanctumCathedral.h */,
+				61D35BF0921842AB9D480DFE /* SanctumVRApp.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -133,16 +120,22 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				077228D91C2030EE00DD1014 /* assets */,
 			);
 			name = SanctumVR;
+			sourceTree = "<group>";
+		};
+		01B97315FEAEA392516A2CEA /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Blocks;
 			sourceTree = "<group>";
 		};
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				03FD5C5421884CE9A0B55D00 /* Resources.h */,
-				E2D5598281CE42FA94EA55CC /* SanctumVR_Prefix.pch */,
+				43C2100DA5BB4A81B81C8A9E /* Resources.h */,
+				8B4A0F41EF7649F3AE18B0B4 /* SanctumVR_Prefix.pch */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -150,8 +143,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5BA756905C794BEBBC17E377 /* CinderApp.icns */,
-				3D861D2657644B9785F48F4C /* Info.plist */,
+				61A66CF3286F4D828F53A309 /* CinderApp.icns */,
+				B7330750A23C4E5A8189B2DF /* Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -163,56 +156,6 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2E38B95AE3C146C1AFB3DF12 /* Release */ = {
-			isa = PBXGroup;
-			children = (
-				213C58B1A8A04CEBB4A5244C /* LibOVR.framework */,
-			);
-			name = Release;
-			sourceTree = "<group>";
-		};
-		2EDAEDB3E1F8475483F2D095 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				2E38B95AE3C146C1AFB3DF12 /* Release */,
-			);
-			name = Mac;
-			sourceTree = "<group>";
-		};
-		5B7E215D761C40448AC2C0E6 /* LibOVR */ = {
-			isa = PBXGroup;
-			children = (
-				6A425A06336F476891160821 /* Lib */,
-			);
-			name = LibOVR;
-			sourceTree = "<group>";
-		};
-		6A425A06336F476891160821 /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				2EDAEDB3E1F8475483F2D095 /* Mac */,
-			);
-			name = Lib;
-			sourceTree = "<group>";
-		};
-		7A1616FAA6524C54A342C1EA /* include */ = {
-			isa = PBXGroup;
-			children = (
-				EC1E536E2AE14B2292F3D714 /* CinderOculus.h */,
-				BDC0A808039F471E8A26FBEA /* CinderOculus.cpp */,
-			);
-			name = include;
-			sourceTree = "<group>";
-		};
-		7A4FDB4B3F2E4488B22FCF99 /* OculusRift */ = {
-			isa = PBXGroup;
-			children = (
-				7A1616FAA6524C54A342C1EA /* include */,
-				5B7E215D761C40448AC2C0E6 /* LibOVR */,
-			);
-			name = OculusRift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +184,6 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SanctumVR" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -267,8 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5681D3C8E7A443F08DE947A3 /* CinderApp.icns in Resources */,
-				077228DA1C2030EE00DD1014 /* assets in Resources */,
+				C23569BF5A814CBB92967FD6 /* CinderApp.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2AE8495D274B71827E45F9 /* SanctumVRApp.cpp in Sources */,
+				F278669BD89C483896BE8510 /* SanctumVRApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,25 +230,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SanctumVR_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SanctumVR_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
+				OTHER_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/macos/libvulkan-d.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/macos/libcinder-vulkan-d.a\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SanctumVR;
 				SYMROOT = ./build;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -323,21 +266,24 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SanctumVR_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NDEBUG=1",
 					"$(inherited)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SanctumVR_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
+				OTHER_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/macosx/$(CONFIGURATION)/libcinder.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/macos/libvulkan.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/macos/libcinder-vulkan.a\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = SanctumVR;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -346,7 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CINDER_PATH = ../../../Cinder;
+				CINDER_PATH = "../../Cinder";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
 				CLANG_CXX_LIBRARY = "libc++";
 				ENABLE_TESTABILITY = YES;
@@ -356,7 +302,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../../../Cinder/blocks/Cinder-OculusRift/include\" \"../../../Cinder/blocks/Cinder-OculusRift/LibOVR/Include\"";
+				USER_HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/include\" ../include",
+					"\"../../Cinder/blocks/Cinder-Vulkan/include\"",
+					"\"$(VULKAN_SDK)/include\"",
+				);
 			};
 			name = Debug;
 		};
@@ -364,7 +314,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CINDER_PATH = ../../../Cinder;
+				CINDER_PATH = "../../Cinder";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -372,7 +322,11 @@
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../../../Cinder/blocks/Cinder-OculusRift/include\" \"../../../Cinder/blocks/Cinder-OculusRift/LibOVR/Include\"";
+				USER_HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/include\" ../include",
+					"\"../../Cinder/blocks/Cinder-Vulkan/include\"",
+					"\"$(VULKAN_SDK)/include\"",
+				);
 			};
 			name = Release;
 		};

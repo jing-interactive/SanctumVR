@@ -33,12 +33,12 @@
 		C7FB19D6124BC0D70045AFD2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FB19D5124BC0D70045AFD2 /* AudioToolbox.framework */; };
 		00A66A361965AC8800B17EB3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A66A351965AC8800B17EB3 /* Accelerate.framework */; };
 		00748058165D41390024B57A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 00748057165D41390024B57A /* assets */; };
-		6B4F77C7CA5143ECAB27240E /* SanctumVR_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B62D5D6646FF42258BE3AA7C /* SanctumVR_Prefix.pch */; };
-		302497885A894C7480EE0570 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B63B1DB2C8B4BC399A885D7 /* LaunchScreen.xib */; };
-		7263EF7F0E604CE3A6B056FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E1D2B0693647D99C8E56A2 /* Images.xcassets */; };
-		27B55FA99E75480A88288D30 /* CinderApp_ios.png in Resources */ = {isa = PBXBuildFile; fileRef = F9247CB41C5B4EFC9D40F269 /* CinderApp_ios.png */; };
-		B2D321657DAF43D988008180 /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = 993E45BC134A4AD19C587BB6 /* Resources.h */; };
-		BCF7E2DA2F494871AF6BF6B6 /* SanctumVRApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B01EAD6FF40A409FB43D4E62 /* SanctumVRApp.cpp */; };
+		8AA551EA26334DC2B99AABDA /* SanctumVR_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = EDE52B67D9A34547A2F5F9AF /* SanctumVR_Prefix.pch */; };
+		9D04987312E64F96B84799FC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8B4B923ED443F6910FFDD1 /* LaunchScreen.xib */; };
+		5106813B3552476C9557A732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667003A619A6406C845ABEBA /* Images.xcassets */; };
+		62761562B49944AC857F3FB9 /* CinderApp_ios.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BE7BC6AC9B34A0EB854E89A /* CinderApp_ios.png */; };
+		2B74086B0A624F66BD6C080F /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = E3A0B5DC023E479483AA51AD /* Resources.h */; };
+		AB70A96DDBD342C9B7975980 /* SanctumVRApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E56ABE5BD7CA4B308739838C /* SanctumVRApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,13 +57,13 @@
 		C7FB19D5124BC0D70045AFD2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		00A66A351965AC8800B17EB3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		00748057165D41390024B57A /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
-		B01EAD6FF40A409FB43D4E62 /* SanctumVRApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../src/SanctumVRApp.cpp; sourceTree = "<group>"; name = SanctumVRApp.cpp; };
-		993E45BC134A4AD19C587BB6 /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../include/Resources.h; sourceTree = "<group>"; name = Resources.h; };
-		F9247CB41C5B4EFC9D40F269 /* CinderApp_ios.png */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = ../resources/CinderApp_ios.png; sourceTree = "<group>"; name = CinderApp_ios.png; };
-		D1E1D2B0693647D99C8E56A2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = Images.xcassets; sourceTree = "<group>"; name = Images.xcassets; };
-		2B63B1DB2C8B4BC399A885D7 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = LaunchScreen.xib; sourceTree = "<group>"; name = LaunchScreen.xib; };
-		4D8A8B51BAF145C8BDA0B075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; name = Info.plist; };
-		B62D5D6646FF42258BE3AA7C /* SanctumVR_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SanctumVR_Prefix.pch; sourceTree = "<group>"; name = SanctumVR_Prefix.pch; };
+		E56ABE5BD7CA4B308739838C /* SanctumVRApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../src/SanctumVRApp.cpp; sourceTree = "<group>"; name = SanctumVRApp.cpp; };
+		E3A0B5DC023E479483AA51AD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../include/Resources.h; sourceTree = "<group>"; name = Resources.h; };
+		3BE7BC6AC9B34A0EB854E89A /* CinderApp_ios.png */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = ../resources/CinderApp_ios.png; sourceTree = "<group>"; name = CinderApp_ios.png; };
+		667003A619A6406C845ABEBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = Images.xcassets; sourceTree = "<group>"; name = Images.xcassets; };
+		7E8B4B923ED443F6910FFDD1 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = LaunchScreen.xib; sourceTree = "<group>"; name = LaunchScreen.xib; };
+		B546D3EFB2A94EE1BFB24FB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; name = Info.plist; };
+		EDE52B67D9A34547A2F5F9AF /* SanctumVR_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = SanctumVR_Prefix.pch; sourceTree = "<group>"; name = SanctumVR_Prefix.pch; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +140,8 @@
 		99692BD914FF149000D0A05F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				993E45BC134A4AD19C587BB6 /* Resources.h */,
-				B62D5D6646FF42258BE3AA7C /* SanctumVR_Prefix.pch */,
+				E3A0B5DC023E479483AA51AD /* Resources.h */,
+				EDE52B67D9A34547A2F5F9AF /* SanctumVR_Prefix.pch */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -149,7 +149,7 @@
 		00692BD914FF149000D0A05E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B01EAD6FF40A409FB43D4E62 /* SanctumVRApp.cpp */,
+				E56ABE5BD7CA4B308739838C /* SanctumVRApp.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -158,10 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				00748057165D41390024B57A /* assets */,
-				F9247CB41C5B4EFC9D40F269 /* CinderApp_ios.png */,
-				D1E1D2B0693647D99C8E56A2 /* Images.xcassets */,
-				2B63B1DB2C8B4BC399A885D7 /* LaunchScreen.xib */,
-				4D8A8B51BAF145C8BDA0B075 /* Info.plist */,
+				3BE7BC6AC9B34A0EB854E89A /* CinderApp_ios.png */,
+				667003A619A6406C845ABEBA /* Images.xcassets */,
+				7E8B4B923ED443F6910FFDD1 /* LaunchScreen.xib */,
+				B546D3EFB2A94EE1BFB24FB0 /* Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -214,9 +214,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				00748058165D41390024B57A /* assets in Resources */,
-				27B55FA99E75480A88288D30 /* CinderApp_ios.png in Resources */,
-				7263EF7F0E604CE3A6B056FB /* Images.xcassets in Resources */,
-				302497885A894C7480EE0570 /* LaunchScreen.xib in Resources */,
+				62761562B49944AC857F3FB9 /* CinderApp_ios.png in Resources */,
+				5106813B3552476C9557A732 /* Images.xcassets in Resources */,
+				9D04987312E64F96B84799FC /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF7E2DA2F494871AF6BF6B6 /* SanctumVRApp.cpp in Sources */,
+				AB70A96DDBD342C9B7975980 /* SanctumVRApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,12 +257,16 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				CINDER_PATH = "../../../Cinder";
+				CINDER_PATH = "../../Cinder";
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
+				USER_HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/include\" ../include",
+					"\"../../Cinder/blocks/Cinder-Vulkan/include\"",
+					"\"$(VULKAN_SDK)/include\"",
+				);
 			};
 			name = Debug;
 		};
@@ -286,14 +290,18 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				CINDER_PATH = "../../../Cinder";
+				CINDER_PATH = "../../Cinder";
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
+				USER_HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/include\" ../include",
+					"\"../../Cinder/blocks/Cinder-Vulkan/include\"",
+					"\"$(VULKAN_SDK)/include\"",
+				);
 			};
 			name = Release;
 		};
@@ -306,12 +314,16 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = (
-					"\"$(CINDER_PATH)/lib/libcinder-iphone_d.a\"",
+					"\"$(CINDER_PATH)/lib/ios/$(CONFIGURATION)/libcinder.a\"",
 					"-lz",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libvulkan-d.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libcinder-vulkan-d.a\"",
 				);
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = (
-					"\"$(CINDER_PATH)/lib/libcinder-iphone-sim_d.a\"",
+					"\"$(CINDER_PATH)/lib/ios-sim/$(CONFIGURATION)/libcinder.a\"",
 					"-lz",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libvulkan-d.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libcinder-vulkan-d.a\"",
 				);
 			};
 			name = Debug;
@@ -325,12 +337,16 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = (
-					"\"$(CINDER_PATH)/lib/libcinder-iphone.a\"",
+					"\"$(CINDER_PATH)/lib/ios/$(CONFIGURATION)/libcinder.a\"",
 					"-lz",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libvulkan.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libcinder-vulkan.a\"",
 				);
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = (
-					"\"$(CINDER_PATH)/lib/libcinder-iphone-sim.a\"",
+					"\"$(CINDER_PATH)/lib/ios-sim/$(CONFIGURATION)/libcinder.a\"",
 					"-lz",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libvulkan.a\"",
+					"\"../../Cinder/blocks/Cinder-Vulkan/lib/ios/libcinder-vulkan.a\"",
 				);
 			};
 			name = Release;
