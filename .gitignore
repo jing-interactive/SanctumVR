@@ -2,7 +2,7 @@
 *.slo
 *.lo
 *.o
-*.obj
+# *.obj
 
 # Precompiled Headers
 *.gch
@@ -26,5 +26,3 @@
 *.exe
 *.out
 *.app
-
-/vc2013/*.sdf

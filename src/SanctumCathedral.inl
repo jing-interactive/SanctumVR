@@ -254,14 +254,14 @@ private:
 
         void update()
         {
-#ifdef VK_API_VERSION
+#ifdef VK_API_VERSION_1_0
             batch->uniform("uTex0", tex);
             batch->uniform("ciBlock1.uAmbient", ambient);
             gfx::ScopedModelMatrix matrix;
             gfx::multModelMatrix(modelMatrix);
 
             batch->setDefaultUniformVars(gfx::context());
-            gfx::context()->addPendingUniformVars(batch);
+            //gfx::context()->addPendingUniformVars(batch);
 #else
             batch->getGlslProg()->uniform("uTex0", 0);
             batch->getGlslProg()->uniform("ciBlock1.uAmbient", ambient);
@@ -272,7 +272,7 @@ private:
         {
             gfx::ScopedDepthWrite depthWrite(depthWrite);
 
-#ifndef VK_API_VERSION
+#ifndef VK_API_VERSION_1_0
             tex->bind();
             gfx::ScopedModelMatrix matrix;
             gfx::multModelMatrix(modelMatrix);
@@ -287,7 +287,7 @@ private:
     {
         gfx::Texture::Format format;
         format.mipmap(true);
-#ifndef VK_API_VERSION
+#ifndef VK_API_VERSION_1_0
         format.setMaxAnisotropy(32.0f);
 #endif
         if (mDefaultShader == nullptr)
